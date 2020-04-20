@@ -12,6 +12,13 @@ Vue.use(ElementUI)
 import axios from 'axios'
 // 配置请求的根路径
 axios.defaults.baseURL = 'https://www.liulongbin.top:8888/api/private/v1/'
+// axios请求拦截器
+axios.interceptors.request.use(config => {
+  // console.log(config);
+  // 为请求头对象，添加token验证的Authorization字段
+  config.headers.Authorization = window.sessionStorage.getItem('token')
+  return config
+})
 Vue.prototype.$http = axios
 
 
