@@ -17,7 +17,7 @@
         </el-col>
       </el-row>
       <!-- 表格 -->
-      <tree-table class="treeTable" :data="catalist" :columns="columns"
+      <tree-table class="treeTable" :data="catelist" :columns="columns"
         :selection-type="false" :expand-type="false" show-index border>
         <!-- 是否有效 -->
         <template #isok="scope">
@@ -65,7 +65,7 @@
           </el-input>
         </el-form-item>
         <el-form-item label="父级分类">
-          <!-- option用来指定数据源 -->
+          <!-- 级联选择框   option用来指定数据源 -->
           <el-cascader v-model="selectedKeys" :options="parentCateList"
             :props="cascaderProps" @change="parentCateChanged" clearable
             change-on-select>
@@ -109,7 +109,7 @@ export default {
         pagesize: 5
       },
       // 商品分类数据列表
-      catalist: [],
+      catelist: [],
       total: 0,
       columns: [
         {
@@ -184,7 +184,7 @@ export default {
         return this.$message.error('获取商品分类失败！')
       }
       console.log(res.data);
-      this.catalist = res.data.result
+      this.catelist = res.data.result
       this.total = res.data.total
     },
     // 监听pagesize改变
