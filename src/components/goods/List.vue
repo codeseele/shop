@@ -16,7 +16,7 @@
             v-model="queryInfo.query" clearable
             @clear="getGoodsList">
             <el-button slot="append" icon="el-icon-search"
-              @click="getGoodsList">
+              @click="handleCurrentChange(1);getGoodsList">
             </el-button>
           </el-input>
         </el-col>
