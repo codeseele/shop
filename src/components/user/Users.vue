@@ -12,8 +12,9 @@
       <!-- 搜索和添加用户输入框区域 -->
       <el-row :gutter="20">
         <el-col :span="8">
-          <el-input placeholder="请输入内容" v-model="queryInfo.query"
-            clearable @clear="getUserList">
+          <el-input placeholder="请输入内容"
+            v-model="queryInfo.query" clearable
+            @clear="getUserList">
             <el-button slot="append" icon="el-icon-search"
               @click="getUserList">
             </el-button>
@@ -59,8 +60,9 @@
             <!-- 分配角色 -->
             <el-tooltip effect="dark" content="分配角色"
               placement="top" :enterable="false">
-              <el-button type="warning" icon="el-icon-setting"
-                size="mini" round @click="setRole(scope.row)">
+              <el-button type="warning"
+                icon="el-icon-setting" size="mini" round
+                @click="setRole(scope.row)">
               </el-button>
             </el-tooltip>
           </template>
@@ -73,7 +75,7 @@
         :page-sizes="[1, 2, 5, 10]"
         :page-size="queryInfo.pagesize"
         layout="total, sizes, prev, pager, next, jumper"
-        :total="total">
+        :total="total" background>
       </el-pagination>
     </el-card>
     <!-- 添加用户的对话框 -->
@@ -96,14 +98,17 @@
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
-        <el-button @click="addDialogVisible">取 消</el-button>
-        <el-button type="primary" @click="addUser">确 定</el-button>
+        <el-button @click="addDialogVisible = false">取 消
+        </el-button>
+        <el-button type="primary" @click="addUser">确 定
+        </el-button>
       </span>
     </el-dialog>
 
     <!-- 修改用户的对话框 -->
-    <el-dialog title="修改用户" :visible.sync="editDialogVisible"
-      width="50%" @close="editDialogClosed">
+    <el-dialog title="修改用户"
+      :visible.sync="editDialogVisible" width="50%"
+      @close="editDialogClosed">
       <el-form :model="editForm" :rules="editFormRules"
         ref="editFormRef" label-width="70px">
         <el-form-item label="用户名">
@@ -125,15 +130,18 @@
       </span>
     </el-dialog>
     <!-- 分配角色对话框 -->
-    <el-dialog title="分配角色" :visible.sync="setRoleDialogVisible"
-      width="50%" @close="setRoleDialogClosed">
+    <el-dialog title="分配角色"
+      :visible.sync="setRoleDialogVisible" width="50%"
+      @close="setRoleDialogClosed">
       <div>
         <p>当前的用户：{{userInfo.username}}</p>
         <p>当前的角色：{{userInfo.role_name}}</p>
         <p>分配新角色：
-          <el-select v-model="selectedRoleId" placeholder="请选择">
-            <el-option v-for="item in roleslist" :key="item.id"
-              :label="item.roleName" :value="item.id">
+          <el-select v-model="selectedRoleId"
+            placeholder="请选择">
+            <el-option v-for="item in roleslist"
+              :key="item.id" :label="item.roleName"
+              :value="item.id">
             </el-option>
           </el-select>
         </p>

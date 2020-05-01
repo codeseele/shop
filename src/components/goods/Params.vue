@@ -237,7 +237,7 @@ export default {
     }
   },
   methods: {
-    //   获取所有的商品分类列表
+    // 获取所有的商品分类列表
     async getCateList() {
       const { data: res } = await this.$http.get('categories')
       if (res.meta.status !== 200) {
@@ -264,7 +264,7 @@ export default {
         this.onlyTableData = []
         return
       }
-      //   根据所选分类的Id,和当前面板的参数, 获取对应的参数
+      // 根据所选分类的Id,和当前面板的参数, 获取对应的参数
       const { data: res } = await this.$http.get(
         `categories/${this.getCateId}/attributes`,
         {
@@ -276,7 +276,7 @@ export default {
       }
 
       res.data.forEach(item => {
-        //   通过三元表达式判断attr_vals是否为空
+        // 通过三元表达式判断attr_vals是否为空
         item.attr_vals = item.attr_vals ? item.attr_vals.split(' ') : []
 
         // 控制文本框的显示与隐藏
